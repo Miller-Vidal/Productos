@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getProductsController = exports.getProductsUseCase = exports.getProdutController = exports.getProductUseCase = exports.registerProductController = exports.registerProductUseCase = exports.mysqlProductRepository = void 0;
+const mysqlProductRepository_1 = require("./mysqlProductRepository");
+const registerProductUseCase_1 = require("../appliaction/registerProductUseCase");
+const registerProductController_1 = require("./controllers/registerProductController");
+const getProductUseCase_1 = require("../appliaction/getProductUseCase");
+const getProdutController_1 = require("./controllers/getProdutController");
+const getProductsUseCase_1 = require("../appliaction/getProductsUseCase");
+const getProductsController_1 = require("./controllers/getProductsController");
+exports.mysqlProductRepository = new mysqlProductRepository_1.MysqlProductRepository();
+exports.registerProductUseCase = new registerProductUseCase_1.RegisterProductUseCase(exports.mysqlProductRepository);
+exports.registerProductController = new registerProductController_1.RegisterProductController(exports.registerProductUseCase);
+exports.getProductUseCase = new getProductUseCase_1.GetProductUseCase(exports.mysqlProductRepository);
+exports.getProdutController = new getProdutController_1.GetProductController(exports.getProductUseCase);
+exports.getProductsUseCase = new getProductsUseCase_1.GetProductsUseCase(exports.mysqlProductRepository);
+exports.getProductsController = new getProductsController_1.GetProductsController(exports.getProductsUseCase);
