@@ -8,8 +8,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-
-
 const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS!);
 
 // Inicializa la aplicación Express
@@ -34,7 +32,7 @@ app.use(fileUpload()); // Agrega esta línea para configurar express-fileupload
 app.use('/api/v1/product', productRouter);
 
 // Configura el puerto
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 app.listen(port, () => {
     console.log(`Corriendo en el puerto ${port}`);
 });
