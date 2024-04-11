@@ -1,4 +1,4 @@
-import { Product } from "./product"
+import { Product,UpdateProduct} from "./product"
 
 export interface ProductRepository{
 
@@ -7,4 +7,6 @@ export interface ProductRepository{
     getProduct(uuid:string):Promise<Product| null>;
 
     getProducts():Promise<Product[] | null>
+
+    updateProductosByUuid(product:UpdateProduct):Promise<UpdateProduct | null| boolean>
 }

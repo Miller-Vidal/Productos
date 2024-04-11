@@ -5,11 +5,11 @@ const signale = new Signale();
 
 
 const config = {
-    host: 'database-2.cfyii6aowla3.us-east-1.rds.amazonaws.com',
+    host: 'database-1.cfyii6aowla3.us-east-1.rds.amazonaws.com',
     port: 3306,
     user: 'admin',
     database: 'vaquito',
-    password: 'admin123',
+    password: '12345678',
     waitForConnections: true,
     connectionLimit: 10,
 };

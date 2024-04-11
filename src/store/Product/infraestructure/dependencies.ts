@@ -5,6 +5,8 @@ import { GetProductUseCase } from "../appliaction/getProductUseCase";
 import { GetProductController } from "./controllers/getProdutController";
 import { GetProductsUseCase } from "../appliaction/getProductsUseCase";
 import { GetProductsController } from "./controllers/getProductsController";
+import { UpdateProductByUuidUsecase } from "../appliaction/updateProductByUuidUseCase";
+import { UpdateProductByUuidController } from "./controllers/updateProductoByUuidController";
 
 export const mysqlProductRepository = new MysqlProductRepository();
 
@@ -16,3 +18,6 @@ export const getProdutController = new GetProductController(getProductUseCase);
 
 export const getProductsUseCase = new GetProductsUseCase(mysqlProductRepository);
 export const getProductsController = new GetProductsController(getProductsUseCase);
+
+export const updateProductByUuidUsecase = new UpdateProductByUuidUsecase(mysqlProductRepository);
+export const updateProductByUuidController = new UpdateProductByUuidController(updateProductByUuidUsecase)

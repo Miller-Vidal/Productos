@@ -16,10 +16,10 @@ async function uploadToFirebase(file: UploadedFile): Promise<string> {
         });
 
         blobStream.on('finish', () => {
-            // Genera la URL pública del archivo cargado
+            // Genera la URL pública del archivo cargado con una fecha de expiración más larga
             blob.getSignedUrl({
                 action: 'read',
-                expires: '01-01-2025' // Puedes ajustar la fecha de expiración según tus necesidades
+                expires: new Date(Date.now() + (365 * 24 * 60 * 60 * 1000)) // Un año de expiración
             }, (err, url) => {
                 if (err) {
                     reject("Error generating signed URL: " + err);
@@ -32,5 +32,6 @@ async function uploadToFirebase(file: UploadedFile): Promise<string> {
         blobStream.end(file.data);
     });
 }
+
 
 export default uploadToFirebase;

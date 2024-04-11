@@ -14,7 +14,6 @@ export class RegisterProductController {
 
             const imgFile = req.files ? req.files.img as UploadedFile : null;
 
-            console.log(req.files)
 
             if (!imgFile) {
                 return res.status(400).send({
@@ -26,6 +25,8 @@ export class RegisterProductController {
             
             // Subir imagen a Firebase y obtener la URL
             const imageUrl = await uploadToFirebase(imgFile);
+
+            console.log(imageUrl)
 
             // Generar un UUID único para el producto
             const uuid = uuidv4();

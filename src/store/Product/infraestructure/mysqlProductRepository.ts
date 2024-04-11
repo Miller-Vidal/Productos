@@ -1,5 +1,5 @@
 import { query } from "../../../database/mysql";
-import { Product } from "../domain/product";
+import { Product,UpdateProduct } from "../domain/product";
 import { ProductRepository } from "../domain/productRepository";
 
 
@@ -14,7 +14,7 @@ export class MysqlProductRepository implements ProductRepository{
             
             // Parámetros para la consulta SQL
             const params = [product.uuid, product.name, product.description, product.price, product.url_img];
-            
+            console.log(product.url_img)
             // Ejecutar la consulta
             await query(sql, params);
 
@@ -79,4 +79,29 @@ export class MysqlProductRepository implements ProductRepository{
             return null;
         }
     }
+
+    async updateProductosByUuid(product: UpdateProduct): Promise<UpdateProduct| null| boolean> {
+        try {
+            // Consulta SQL para actualizar un producto existente
+            const sql = `
+                UPDATE products
+                SET name = ?, description = ?, price = ?
+                WHERE uuid = ?
+            `;
+            
+            // Parámetros para la consulta SQL
+            const params = [product.name, product.description, product.price, product.uuid];
+            
+            // Ejecutar la consulta
+            await query(sql, params);
+            
+            // Si la actualización fue exitosa, devolver true
+            return true;
+        } catch (error) {
+            console.error("Error updating product:", error);
+            // Si ocurre un error, devolver false
+            return false;
+        }
+    }
+    
 }

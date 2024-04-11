@@ -18,15 +18,15 @@ export class GetProductsController{
                     }
                 })
             }else{
-                return res.status(200).send({
+                return res.status(204).send({
                     status: "ok",
-                    message: "Product not found"
+                    message: "Content not found"
                 });
             }
         } catch (error) {
             return res.status(500).send({
                 status: "error",
-                message: "An error occurred while list the product."
+                message: "An error occurred while list the Admins."
             });
         }
     }
